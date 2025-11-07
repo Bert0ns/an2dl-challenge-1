@@ -9,7 +9,7 @@ Then, follow these steps:
 1. `pip install -r ./requirements.txt`
 2. Go to kaggle website, click on profile settings and create an API token. This will download a `kaggle.json` file.
 3. Place the `kaggle.json` file in the user home directory under the folder `.kaggle/`. For example, on Linux it would be `/home/username/.kaggle/kaggle.json`.
-4. Go in the first cell of the notebook and edit the current_dir variable to point to the directory where you want to download the data and work on.
+4. Go in the first cell of the notebook and edit the `current_dir` variable to point to the directory where you want to download the data and work on.
    - If you have Google Drive installed and mounted, you can set it to a folder in your Google Drive.
 5. Run the notebook
 
