@@ -22,3 +22,9 @@ For example, integers that fit into int8 will be converted to that type.
 - some features may be useless:
   - joint_13 to joint_25 are all pretty much all zeros
   - joint_30 is constant to 0.5
+
+---
+# Create a new notebook for each Network
+To keep things organized, create a new notebook for each experiment you want to run.
+You can copy the content of the main notebook and modify it as needed.
+Make sure to change the name of the notebook to reflect the experiment you are running.
