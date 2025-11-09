@@ -37,6 +37,10 @@ For example, integers that fit into int8 will be converted to that type.
   - joint_30 is constant to 0.5
 
 ---
+# **Ideas for further experiments:**
+- do a loop of grid searches but each time reduce the intervals around the best hyperparameters found in the previous search
+
+---
 # **Create a new notebook for each Network**
 To keep things organized, create a new notebook for each experiment you want to run.
 You can copy the content of the main notebook and modify it as needed.
