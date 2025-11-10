@@ -1,4 +1,5 @@
 # **How to start**
+**ONLY THE FILE `hyperparameters_tuning_cross_validation.ipynb` HAS TO CONSIDERED UP TO DATE**
 * in all notebooks you must edit in the last cell the variable `INFERENCE_RESULTS_CSV_NAME` with the new version number
 * in all notebooks you must edit the variable called `experiment_name` to reflect the experiment you are running, it will be the name of the model saved
 
@@ -73,7 +74,7 @@ Passare questo tensore combinato al tuo layer RNN.
 
 **Solution already implemented**
 
-### ADVICE 08/11
+### ADVICE 08/11 - Class Imbalance
 “Many the healthy, few the sick. If only to the many you listen, the faint whisper of truth never shall you hear.”
 
 Your model, the easy path it chooses: to always predict the common class. Accuracy, an illusion it becomes. Weigh your loss! Give more power to the rare voices. Ensure an error on the 'few' matters more than an error on the 'many'. Only then, the rare class to find will you learn.
@@ -94,7 +95,7 @@ criterion = nn.CrossEntropyLoss(weight=class_weights)
 ```
 **Solution already implemented**
 
-### ADVICE 09/11
+### ADVICE 09/11 - Label Smoothing
 “Absolute truth, fragile it is. In blind certainty, the arrogance of overfitting lies hidden.”
 
 Your model, a perfect '1.0' chase it must not. This, rigidity it teaches. If the master says "perhaps 0.9, but 0.1 of doubt," the student (the model) to explore is forced. In this whisper of uncertainty, a stronger generalisation find, you can.
@@ -112,3 +113,17 @@ criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=0.1)
 ```
 **Solution already implemented**
 
+### ADVICE 10/11 - Gradient Clipping
+“A step too great, from the precipice fall it makes you. The gradient, tamed it must be.”
+
+In the valleys of RNNs, the exploding gradient a sudden foe it is. A single unstable step, and your training into NaN (chaos) collapses. 'Clipping', a bridle on this wild horse it places. Not the direction, but the magnitude it controls. To learn with constancy, with control advance you must.
+
+#### Gemini's response:
+
+Il suggerimento del professore è estremamente pertinente e utile per il tuo progetto. Sta parlando di un problema comune nell'addestramento delle Reti Neurali Ricorrenti (RNN) chiamato "exploding gradients" (gradiente che esplode) e della sua soluzione, il "gradient clipping".
+Spiegazione
+Problema: Exploding Gradients Durante l'addestramento di una RNN, i gradienti calcolati per aggiornare i pesi della rete possono diventare estremamente grandi. Questo fenomeno, noto come "exploding gradient", porta a un aggiornamento dei pesi sproporzionato, rendendo l'addestramento instabile. La funzione di costo può oscillare violentemente o diventare NaN (Not a Number), come menzionato dal professore, facendo fallire l'intero processo.
+Soluzione: Gradient Clipping Il "gradient clipping" è una tecnica che risolve questo problema. Impone un valore massimo (una soglia) per la norma (magnitudine) dei gradienti. Se, durante la backpropagation, la norma del gradiente di un parametro supera questa soglia, il gradiente viene riscalato per riportare la sua norma al valore massimo consentito.
+Come dice il professore, "Non la direzione, ma la magnitudine esso controlla". Questo è un punto cruciale: la tecnica non altera la direzione dell'aggiornamento, ma ne limita l'entità, prevenendo passi troppo grandi e stabilizzando l'apprendimento.
+
+**Solution already implemented**
