@@ -46,6 +46,7 @@ For example, integers that fit into int8 will be converted to that type.
 - do a loop of grid searches but each time reduce the intervals around the best hyperparameters found in the previous search
 - put `WINDOW_SIZE = 160` since there are 160 samples for each second of data
 - instead of removing the useless features, try to do a PCA or some sort of embedding to reduce the dimensionality of the input data
+- **stratified** k-fold cross validation to keep the same distribution of classes in each fold
 - low priority:
   - try different optimizers: AdamW, RMSprop, Adagrad, Adadelta
 ---
