@@ -22,10 +22,14 @@ Then, follow these steps:
 3. the update `current_dir` variable in the first cell of the notebook to point to a folder in your Google Drive where you uploaded the data and want to work on.
 
 ### **If you are in Kaggle Notebooks**
-Currently, it does not work because there are some import issues, need to nest them inside an if
+1. to import the dataset:
+   1. Download the dataset
+   2. create a public dataset in your profile
+   3. upload the pirate pain dataset
+3. From the notebook:
+   1. in the first cell change 'isKaggle' to True
+   2. add dataset to env by clicking "Add input"
 
-1. You don't need to download the data, it is already available in the Kaggle environment.
-2. just run the notebook as is.
 ---
 # **Relevant Notes**
 
