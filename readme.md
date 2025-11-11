@@ -132,3 +132,18 @@ Come dice il professore, "Non la direzione, ma la magnitudine esso controlla". Q
 
 **Solution already implemented**
 
+## ADVICE 11/11 - Autocorrelation x Windowing
+“Its own echo, the series sings. In the rhythm of this echo, the true window lies.”
+
+By instinct, your window you choose. 30 steps? 50? A blind number, it is. But the data, their own memory show you. Autocorrelation, a mirror to the past it is. Look at its plot. Where does the past most resemble the present? At 12 steps? At 24? These peaks, the natural cycles they are. If the echo fades after 15 steps, why force your LSTM to remember 100? Listen to the data. It tells you how far back, it is worth looking.
+
+#### Gemini's response:
+Sì, il consiglio del professore è estremamente pertinente e applicabile al vostro progetto. Anzi, è uno dei suggerimenti più importanti per ottimizzare un modello basato su serie temporali come il vostro.
+Spiegazione
+Attualmente, nel vostro codice (hyperparameters_tuning_cross_validation.ipynb), avete impostato una WINDOW_SIZE fissa a 100. Come dice il professore, questo è un "numero cieco", scelto istintivamente.
+Il consiglio suggerisce un approccio più scientifico:
+Analizzare l'Autocorrelazione: L'autocorrelazione misura quanto un punto in una serie temporale sia simile a un punto precedente (un "lag" o ritardo). Analizzando l'autocorrelazione per diversi ritardi, potete scoprire i "cicli naturali" o la "memoria" intrinseca dei vostri dati.
+Scegliere la window_size: Se il grafico dell'autocorrelazione mostra che la correlazione cala significativamente dopo, ad esempio, 25 passi, significa che i dati più vecchi di 25 passi hanno poca influenza su quelli attuali. Una window_size molto più grande (come 100) potrebbe costringere il modello a imparare da dati rumorosi o irrilevanti, peggiorando le performance o aumentando inutilmente la complessità. I picchi nel grafico, invece, suggeriscono le lunghezze di finestra ottimali.
+
+
+
