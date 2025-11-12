@@ -149,5 +149,9 @@ Il consiglio suggerisce un approccio più scientifico:
 Analizzare l'Autocorrelazione: L'autocorrelazione misura quanto un punto in una serie temporale sia simile a un punto precedente (un "lag" o ritardo). Analizzando l'autocorrelazione per diversi ritardi, potete scoprire i "cicli naturali" o la "memoria" intrinseca dei vostri dati.
 Scegliere la window_size: Se il grafico dell'autocorrelazione mostra che la correlazione cala significativamente dopo, ad esempio, 25 passi, significa che i dati più vecchi di 25 passi hanno poca influenza su quelli attuali. Una window_size molto più grande (come 100) potrebbe costringere il modello a imparare da dati rumorosi o irrilevanti, peggiorando le performance o aumentando inutilmente la complessità. I picchi nel grafico, invece, suggeriscono le lunghezze di finestra ottimali.
 
+## ADVICE 12/11 - Time Feature Engineering
+“Not only what happens, but when. Time, not just an index, but a feature it is.”
+
+Your signal, bare it is. But the 'when', rich context it gives. Is it the hour of the day? The day of the week? The start of the month? These are not numbers, but cycles. Transform this 'hour' into a feature. And if it is a category ('Monday'), in the embedding space, its true meaning let it learn.
 
 
