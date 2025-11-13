@@ -155,3 +155,46 @@ Scegliere la window_size: Se il grafico dell'autocorrelazione mostra che la corr
 Your signal, bare it is. But the 'when', rich context it gives. Is it the hour of the day? The day of the week? The start of the month? These are not numbers, but cycles. Transform this 'hour' into a feature. And if it is a category ('Monday'), in the embedding space, its true meaning let it learn.
 
 
+
+## ADVICE 13/11 - 1D Convolutions
+“A pattern in time, like a pattern in space it is. With a new eye, look you must.”
+
+The Conv2D upon images observes; the Conv1D across sequences scans. The same rules of kernel, padding, and stride, they obey. How might this eye for local patterns, your recurrent network assist? Before the RNN's memory processes the past, the CNN can find the shape.
+
+#### Ai's response:
+
+Il professore sta suggerendo di aggiungere layer di Convoluzione 1D PRIMA del vostro layer ricorrente (RNN/LSTM/GRU). Questo è assolutamente applicabile e molto pertinente al vostro progetto!
+🎯 Concetto chiave
+Analogia con le immagini:
+* Conv2D sulle immagini: identifica pattern locali spaziali (bordi, texture, forme) scorando un kernel 2D su altezza e larghezza
+* Conv1D sulle serie temporali: identifica pattern locali temporali (picchi, trend, oscillazioni) scorrendo un kernel 1D lungo la dimensione temporale
+Nel vostro caso specifico:
+Attualmente il vostro modello funziona così:
+```
+Input Features → Embeddings → RNN/LSTM/GRU → Classifier
+```
+Il professore suggerisce:
+```
+Input Features → Embeddings → Conv1D → RNN/LSTM/GRU → Classifier
+                                 ↑
+                    "Before the RNN's memory processes the past,
+                     the CNN can find the shape"
+```
+
+Perché è utile nel vostro progetto?
+1. Estrazione di pattern locali
+I vostri dati sono sensori corporei (joint_1, joint_2, ecc.) campionati nel tempo. La Conv1D può:
+Identificare micro-pattern: piccole sequenze di movimenti che indicano dolore
+Rilevare transizioni: cambiamenti bruschi nei valori dei sensori
+Trovare correlazioni temporali locali: ad esempio, se joint_5 e joint_7 hanno un pattern sincronizzato nei successivi 3-5 timestep
+2. Riduzione della complessità per la RNN
+La Conv1D "pre-processa" i dati estraendo feature più informative
+La RNN riceve input già "filtrati" e più ricchi semanticamente
+Questo permette alla RNN di concentrarsi sulle dipendenze a lungo termine invece che sui dettagli locali
+3. Riduzione dimensionale temporale (opzionale)
+Con stride > 1 o pooling, potete:
+Ridurre la lunghezza della sequenza (es. da 100 a 50 timestep)
+Accelerare il training
+Ridurre il rischio di vanishing gradient
+
+

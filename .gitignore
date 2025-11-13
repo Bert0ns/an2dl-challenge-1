@@ -2,3 +2,5 @@
 .idea/
 .kaggle/
 kaggle_output/
+
+inference_.ipynb
