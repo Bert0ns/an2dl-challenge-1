@@ -136,7 +136,7 @@ Come dice il professore, "Non la direzione, ma la magnitudine esso controlla". Q
 
 **Solution already implemented**
 
-## ADVICE 11/11 - Autocorrelation x Windowing
+### ADVICE 11/11 - Autocorrelation x Windowing
 “Its own echo, the series sings. In the rhythm of this echo, the true window lies.”
 
 By instinct, your window you choose. 30 steps? 50? A blind number, it is. But the data, their own memory show you. Autocorrelation, a mirror to the past it is. Look at its plot. Where does the past most resemble the present? At 12 steps? At 24? These peaks, the natural cycles they are. If the echo fades after 15 steps, why force your LSTM to remember 100? Listen to the data. It tells you how far back, it is worth looking.
@@ -149,14 +149,14 @@ Il consiglio suggerisce un approccio più scientifico:
 Analizzare l'Autocorrelazione: L'autocorrelazione misura quanto un punto in una serie temporale sia simile a un punto precedente (un "lag" o ritardo). Analizzando l'autocorrelazione per diversi ritardi, potete scoprire i "cicli naturali" o la "memoria" intrinseca dei vostri dati.
 Scegliere la window_size: Se il grafico dell'autocorrelazione mostra che la correlazione cala significativamente dopo, ad esempio, 25 passi, significa che i dati più vecchi di 25 passi hanno poca influenza su quelli attuali. Una window_size molto più grande (come 100) potrebbe costringere il modello a imparare da dati rumorosi o irrilevanti, peggiorando le performance o aumentando inutilmente la complessità. I picchi nel grafico, invece, suggeriscono le lunghezze di finestra ottimali.
 
-## ADVICE 12/11 - Time Feature Engineering
+### ADVICE 12/11 - Time Feature Engineering
 “Not only what happens, but when. Time, not just an index, but a feature it is.”
 
 Your signal, bare it is. But the 'when', rich context it gives. Is it the hour of the day? The day of the week? The start of the month? These are not numbers, but cycles. Transform this 'hour' into a feature. And if it is a category ('Monday'), in the embedding space, its true meaning let it learn.
 
 
 
-## ADVICE 13/11 - 1D Convolutions
+### ADVICE 13/11 - 1D Convolutions
 “A pattern in time, like a pattern in space it is. With a new eye, look you must.”
 
 The Conv2D upon images observes; the Conv1D across sequences scans. The same rules of kernel, padding, and stride, they obey. How might this eye for local patterns, your recurrent network assist? Before the RNN's memory processes the past, the CNN can find the shape.
@@ -196,5 +196,11 @@ Con stride > 1 o pooling, potete:
 Ridurre la lunghezza della sequenza (es. da 100 a 50 timestep)
 Accelerare il training
 Ridurre il rischio di vanishing gradient
+
+
+### ADVICE 14/11 - Attention
+“Not all steps in time, equal weight do they carry. What is important, the model must learn to see.”
+
+Your LSTM, long memory it has. But does it remember the vital first step, when it reaches the last? Attention, a torch in the long corridor of time it is. It teaches the network where to look. It gives more weight to the critical moments. In this focus, great power find you can.
 
 
