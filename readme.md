@@ -203,4 +203,18 @@ Ridurre il rischio di vanishing gradient
 
 Your LSTM, long memory it has. But does it remember the vital first step, when it reaches the last? Attention, a torch in the long corridor of time it is. It teaches the network where to look. It gives more weight to the critical moments. In this focus, great power find you can.
 
+#### Breve spiegazione dell'Attention Layer (contestualizzata al progetto)
 
+Nel nostro progetto usiamo sequenze temporali di lunghezza fissata (finestre di joint nel tempo) e un modello ricorrente (LSTM/GRU) per classificare il livello di dolore del pirata. In un LSTM "puro" l'informazione di ogni istante viene compressa in un unico vettore finale: questo può far perdere di importanza alcuni momenti chiave della sequenza.
+
+L'**attention layer** risolve proprio questo problema: invece di considerare tutti i timestep allo stesso modo, impara a pesare diversamente i vari istanti. In pratica:
+- prende tutti gli hidden state della RNN (`rnn_out`, uno per ogni timestep),
+- calcola quanto ogni timestep è "rilevante" per la decisione finale,
+- costruisce una rappresentazione aggregata che dà più peso ai momenti più informativi (ad esempio brusche variazioni nei joint).
+
+Nel contesto del Pirate Pain Challenge questo è utile perché:
+- non tutti i frame della camminata del pirata sono ugualmente informativi sul dolore percepito,
+- l'attenzione permette al modello di concentrarsi sulle fasi del movimento dove il pattern dei joint suggerisce più chiaramente una condizione di **no_pain / low_pain / high_pain**,
+- rispetto a usare solo l'ultimo hidden state dell'LSTM, l'attenzione sfrutta in modo più ricco tutta la sequenza.
+
+Per questo motivo abbiamo introdotto nel modello un flag `use_attention` che ci permette di confrontare in modo controllato le prestazioni del modello **con** e **senza** attention, mantenendo invariata l'architettura di base.
